@@ -1,4 +1,4 @@
 
 Merhaba,
 
-XML uzantılı e fatura oluşturma çalışması. 
+XML uzanÄ±lÄ± e fatura oluÅŸturma Ã§alÄ±ÅŸmasÄ±.
