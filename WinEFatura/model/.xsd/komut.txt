@@ -1,0 +1,2 @@
+Developer PowerShel
+xsd  /c CCTS_CCT_SchemaModule-2.1.xsd UBL-CommonAggregateComponents-2.1.xsd UBL-CommonBasicComponents-2.1.xsd UBL-CommonExtensionComponents-2.1.xsd UBL-CoreComponentParameters-2.1.xsd UBL-Invoice-2.1.xsd UBL-UnqualifiedDataTypes-2.1.xsd

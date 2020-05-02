@@ -1,0 +1,54 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>com.yp.efatura</RootNamespace>
+    <Authors>Yüksel Penekli</Authors>
+    <Company>Yüksel Penekli</Company>
+    <Product>e-fatura</Product>
+    <Description>E-Fatura oluşturma programı</Description>
+    <AssemblyName>EFatura</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>0</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="model\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netcoreapp3.1\general.xslt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="data\vkFatura.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>vkFatura.xsd</DependentUpon>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="data\vkFatura.xsd">
+      <CustomToolNamespace>com.yp.efatura.data</CustomToolNamespace>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vkFatura.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+</Project>

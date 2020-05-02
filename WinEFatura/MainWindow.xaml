@@ -1,0 +1,85 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WinEFatura"
+        xmlns:data="clr-namespace:com.yp.efatura.data" x:Class="com.yp.efatura.MainWindow"
+        mc:Ignorable="d"
+        Title="E-FATURA OLUŞTURMA VE GÖRÜNTÜLEME" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="NameCellStyle" TargetType="DataGridCell">
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+    </Window.Resources>
+    <DockPanel LastChildFill="True" Margin="5,5,5,5" >
+        <ToolBarPanel DockPanel.Dock="Top" VerticalAlignment="Top">
+            <ToolBar>
+                <Button x:Name="btnFill" Content="FATURA BİLGİLERİNİ DOLDUR " Click="btnFill_Click" Margin="0,0,5,0" />
+                <Separator/>
+                <Button x:Name="btnCreate" Content="E-FATURA OLUŞTUR" Click="btnCreate_Click" IsEnabled="False" Margin="0,0,5,0"/>
+                <Separator/>
+                <Button x:Name="btnXmlRead" Content="XML FATURA GÖRÜNTÜLE "   Click="btnXmlRead_Click"/>
+            </ToolBar>
+        </ToolBarPanel>
+        <GroupBox  DockPanel.Dock="Top" Header="FATURA BAŞLIK BİLGİLERİ" Height="83" Margin="5">
+            <StackPanel >
+                <WrapPanel Margin="0,0,0,5" >
+                    <Label Width="180" FontWeight="Bold" HorizontalContentAlignment="Right" Content="FATURA NU./FATURA TARİHİ :" />
+                    <TextBox x:Name="txtFaturaNo" Width="150" Text="{Binding faturanu, Mode=TwoWay}" />
+
+                    <Label FontWeight="Bold" Content="/"/>
+                    <DatePicker x:Name="txtFaturaTarihi" Width="190" SelectedDate="{Binding tarih, Mode=TwoWay}" />
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,5">
+                    <Label Width="180"  FontWeight="Bold" HorizontalContentAlignment="Right" Content="CARİ KODU/ADI:"/>
+                    <TextBox x:Name="txtCariKod" Width="150" Text="{Binding alicicarikod, Mode=TwoWay}"/>
+                    <Label FontWeight="Bold" Content="/"/>
+                    <TextBox x:Name="txtCariAdi" Width="250" Text="{Binding alicicariadi, Mode=TwoWay}"/>
+                </WrapPanel>
+            </StackPanel>
+        </GroupBox>
+        <GroupBox  DockPanel.Dock="Bottom" Header="FATURA TOPLAMLARI" Height="177">
+            <StackPanel >
+                <WrapPanel Margin="0,0,0,5" HorizontalAlignment="Right">
+                    <Label Width="180" FontWeight="Bold" HorizontalContentAlignment="Right" Content="TUTAR :" />
+                    <TextBox  Width="150" Text="{Binding tutar, Mode=OneWay, StringFormat=C}" IsReadOnly="True" HorizontalContentAlignment="Right" />
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,5" HorizontalAlignment="Right">
+                    <Label Width="180" FontWeight="Bold" HorizontalContentAlignment="Right" Content="İSKONTO TUTARI :" />
+                    <TextBox  Width="150" Text="{Binding iskonto, Mode=OneWay, StringFormat=C}" IsReadOnly="True" HorizontalContentAlignment="Right"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,5" HorizontalAlignment="Right">
+                    <Label Width="180" FontWeight="Bold" HorizontalContentAlignment="Right" Content="NET TUTAR :" />
+                    <TextBox  Width="150" Text="{Binding nettutar, Mode=OneWay, StringFormat=C}" IsReadOnly="True" HorizontalContentAlignment="Right"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,5" HorizontalAlignment="Right">
+                    <Label Width="180" FontWeight="Bold" HorizontalContentAlignment="Right" Content="KDV TUTARI :" />
+                    <TextBox  Width="150" Text="{Binding kdv, Mode=OneWay, StringFormat=C}" IsReadOnly="True" HorizontalContentAlignment="Right"/>
+                </WrapPanel>
+                <WrapPanel Margin="0,0,0,5" HorizontalAlignment="Right">
+                    <Label Width="180" FontWeight="Bold" HorizontalContentAlignment="Right" Content="TOPLAM TUTAR :" />
+                    <TextBox  Width="150" Text="{Binding toplamtutar, Mode=OneWay, StringFormat=C}" IsReadOnly="True" HorizontalContentAlignment="Right"/>
+                </WrapPanel>
+            </StackPanel>
+
+        </GroupBox>
+        <DataGrid x:Name="tblFaturaici" DockPanel.Dock="Top" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="SIRA NU."  Binding="{Binding Path=faturasirnu}" />
+                <DataGridTextColumn Header="STOK NU."  Binding="{Binding Path=urunkod}" />
+                <DataGridTextColumn Header="ÜRÜN ADI"  Binding="{Binding Path=urunadi}" />
+                <DataGridTextColumn Header="MİKTAR"  Binding="{Binding Path=miktar}" CellStyle="{StaticResource NameCellStyle}" />
+                <DataGridTextColumn Header="BİRİM"  Binding="{Binding Path=birimadi}" />
+                <DataGridTextColumn Header="FİYAT"  Binding="{Binding Path=fiyat, StringFormat=C}" CellStyle="{StaticResource NameCellStyle}"/>
+                <DataGridTextColumn Header="TUTAR"  Binding="{Binding Path=tutar, StringFormat=C}" CellStyle="{StaticResource NameCellStyle}"/>
+                <DataGridTextColumn Header="İSK.(%)"  Binding="{Binding Path=iskontooran, StringFormat=P2}" CellStyle="{StaticResource NameCellStyle}"/>
+                <DataGridTextColumn Header="İSKONTO"  Binding="{Binding Path=iskonto, StringFormat=C}" CellStyle="{StaticResource NameCellStyle}"/>
+                <DataGridTextColumn Header="KDV(%)"  Binding="{Binding Path=kdvoran, StringFormat=P0}" CellStyle="{StaticResource NameCellStyle}"/>
+                <DataGridTextColumn Header="KDV"  Binding="{Binding Path=kdv, StringFormat=C}" CellStyle="{StaticResource NameCellStyle}"/>
+                <DataGridTextColumn Header="NET TUTAR"  Binding="{Binding Path=nettutar, StringFormat=C}" CellStyle="{StaticResource NameCellStyle}"/>
+                <DataGridTextColumn Header="TOPLAM TUTAR"  Binding="{Binding Path=toplamtutar, StringFormat=C}" CellStyle="{StaticResource NameCellStyle}"/>
+            </DataGrid.Columns>           
+        </DataGrid>
+    </DockPanel>
+</Window>
