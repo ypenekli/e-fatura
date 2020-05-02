@@ -1,4 +1,5 @@
 
 Merhaba,
 
-XML uzantýlý e fatura oluþturma çalýþmasý. 
+XML uzantýlý e fatura oluþturma örnek çalýþmasý. 
+
