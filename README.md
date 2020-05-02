@@ -1,5 +1,4 @@
 
-Merhaba,
+# E-FATURA OLUÅTURMA PROGRAMI
 
-XML uzantılı e fatura oluşturma örnek çalışması. 
-
+XML uzantÄ±lÄ± e fatura oluÅŸturma Ã¶rnek Ã§alÄ±ÅŸmasÄ±. 
