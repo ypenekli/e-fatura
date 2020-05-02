@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 //test
+//test 2, tarayicidan eklendi.
 
 namespace com.yp.efatura.model
 {
